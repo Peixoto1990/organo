@@ -1,0 +1,35 @@
+.rodape footer {
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5rem 2rem 4rem 2rem;
+    flex-wrap: wrap;
+}
+
+.logo {
+    flex-basis: 200px;
+    height: 80px;
+    margin-bottom: 1rem;
+}
+
+.logo div {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: inherit;
+}
+
+.nota-rodape {
+    flex-basis: 200px;
+    color: #FFFFFF;
+    margin-bottom: 1rem;
+}
+
+.nota-rodape h4 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+}
