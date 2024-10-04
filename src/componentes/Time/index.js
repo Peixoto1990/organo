@@ -1,3 +1,4 @@
+import Colaborador from '../Colaborador';
 import './Time.css';
 
 const Time = (props) => {
@@ -7,20 +8,18 @@ const Time = (props) => {
 
             if (timeExiste) {
                 return (
-                    <section style={{backgroundColor: time["corSecundaria"]}} className={"time"} key={time["nome"]}>
+                    <section style={{backgroundColor: time["corSecundaria"], backgroundImage: "url(/imagens/fundo.png)"}} id={time.id} className={"time"} key={time["nome"]}>
                         <h3>{time["nome"]}<div style={{backgroundColor: time.corPrimaria}}></div></h3>
                         <ul>
                             {props.colaboradores.map((colaborador, indice) => {
                                 if (colaborador.time === time["nome"]) {
                                     return (
-                                        <li key={indice + colaborador.nome}>
-                                            <div style={{backgroundColor: time["corPrimaria"]}}><button onClick={(ev) => props.excluiItem(ev.target.dataset.nome)} data-nome={colaborador.nome}>x</button></div>
-                                            <img src={colaborador.imagem} alt={colaborador.nome}/>
-                                            <div>
-                                                <h4>{colaborador.nome}</h4>
-                                                <p>{colaborador.cargo}</p>
-                                            </div>
-                                        </li>
+                                        <Colaborador 
+                                         key={indice}
+                                         time={time}
+                                         colaborador={colaborador}
+                                         excluiItem={props.excluiItem}
+                                        />
                                     )
                                 } else {
                                     return ""

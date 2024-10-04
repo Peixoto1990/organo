@@ -1,0 +1,74 @@
+.colaborador {
+    list-style: none;
+    flex-basis: 240px;
+    position: relative;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 65px auto;
+    border-radius: 12px;
+    box-shadow: 0px 0px 3px 1px rgba(0,0,0,.40);
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+    transition: .3s transform ease-in-out;
+}
+
+.colaborador:hover {
+    transform: scale(1.1);
+}
+
+.colaborador:hover > div:first-child > button {
+    display: block;
+}
+
+.colaborador div:first-child {
+    height: 100%;
+    grid-column: 1/2;
+    grid-row: 1/2;
+    background-color: green;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+    position: relative;
+}
+
+.colaborador div:first-child button {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 5px;
+    right: 10px;
+    font-weight: 600;
+    background-color: transparent;
+    color: #000000;
+    border: none;
+    outline: none;
+    display: none;
+}
+
+.colaborador div:first-child button:is(:hover, :active, :focus) {
+    color: red;
+}
+
+.colaborador img {
+    position: absolute;
+    top: 27px;
+    width: 90px;
+    height: 90px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50%;
+    display: block;
+    background-color: black;
+}
+
+.colaborador div:nth-child(3) {
+    grid-column: 1/2;
+    grid-row: 2/3;
+    background-color: #FFFFFF;
+    padding: 3rem 1rem 1rem 1rem;
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+    text-align: center;
+}
