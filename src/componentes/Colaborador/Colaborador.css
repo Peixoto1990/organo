@@ -16,11 +16,20 @@
     transform: scale(1.1);
 }
 
-.colaborador:hover > div:first-child > button {
+.colaborador:hover .botao-excluiColaborador {
     display: block;
 }
 
-.colaborador div:first-child {
+.botao-excluiColaborador {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    z-index: 2;
+    cursor: pointer;
+    display: none;
+}
+
+.colaborador-cabecalho {
     height: 100%;
     grid-column: 1/2;
     grid-row: 1/2;
@@ -30,24 +39,8 @@
     position: relative;
 }
 
-.colaborador div:first-child button {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: 5px;
-    right: 10px;
-    font-weight: 600;
-    background-color: transparent;
-    color: #000000;
-    border: none;
-    outline: none;
-    display: none;
-}
 
-.colaborador div:first-child button:is(:hover, :active, :focus) {
+.colaborador .botao-excluiColaborador:is(:hover, :active, :focus) {
     color: red;
 }
 
@@ -63,7 +56,7 @@
     background-color: black;
 }
 
-.colaborador div:nth-child(3) {
+.colaborador-rodape {
     grid-column: 1/2;
     grid-row: 2/3;
     background-color: #FFFFFF;
