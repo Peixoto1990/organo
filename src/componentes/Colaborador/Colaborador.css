@@ -65,3 +65,11 @@
     border-bottom-right-radius: inherit;
     text-align: center;
 }
+
+.favorito {
+    cursor: pointer;
+}
+
+.favorito-true {
+    color: #FF0000;
+}

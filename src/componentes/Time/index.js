@@ -11,7 +11,7 @@ const Time = (props) => {
                 return (
                     <section style={{backgroundColor: hexToRgba(time.cor, 0.5), backgroundImage: "url(/imagens/fundo.png)"}} id={time.id} className={"time"} key={time["nome"]}>
                         <h3>{time["nome"]}<div style={{backgroundColor: time.cor}}></div></h3>
-                        <input title='Click para mudar a cor do time' value={time.cor} className='mudar-cor' onChange={(ev) => props.mudaCorTime(ev.target.value, time.id)} type='color' />
+                        <input title='Clique para mudar a cor do time' value={time.cor} className='mudar-cor' onChange={(ev) => props.mudaCorTime(ev.target.value, time.id)} type='color' />
                         <ul>
                             {props.colaboradores.map((colaborador, indice) => {
                                 if (colaborador.time === time["nome"]) {
@@ -21,6 +21,7 @@ const Time = (props) => {
                                          time={time}
                                          colaborador={colaborador}
                                          excluiItem={props.excluiItem}
+                                         aoFavorito={props.aoFavorito}
                                         />
                                     )
                                 } else {

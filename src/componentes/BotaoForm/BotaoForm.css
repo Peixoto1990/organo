@@ -1,0 +1,26 @@
+.botao-form {
+    width: 70px;
+    height: 70px;
+    margin: 4rem 3rem 4rem auto;
+    border-radius: 50%;
+}
+
+.botao-form button {
+    display: block;
+    border: none;
+    outline: none;
+    border-radius: inherit;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    background-color: #6278f7;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    opacity: .8;
+    transition: .2s opacity ease-in-out;
+}
+
+.botao-form button:is(:hover, :active, :focus) {
+    opacity: 1;
+}

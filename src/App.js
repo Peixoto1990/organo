@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import Banner from './componentes/Banner';
 import Formulario from './componentes/Formulario';
+import BotaoForm from './componentes/BotaoForm';
 import Time from './componentes/Time';
 import Rodape from './componentes/Rodape';
 import { v4 as uuidv4 } from 'uuid';
@@ -50,68 +51,16 @@ function App() {
     }
   ])
 
-  const inicial = [
-    {
-      id: uuidv4(),
-      nome: "Aluilson",
-      cargo: "Developer Jr.",
-      imagem: "https://github.com/Peixoto1990.png",
-      time: "Front-End"
-    }
-    ,
-    {
-      id: uuidv4(),
-      nome: "Aluilson",
-      cargo: "Developer Jr.",
-      imagem: "https://github.com/Peixoto1990.png",
-      time: "Programação"
-    }
-    ,
-    {
-      id: uuidv4(),
-      nome: "Aluilson",
-      cargo: "Developer Jr.",
-      imagem: "https://github.com/Peixoto1990.png",
-      time: "Data Science"
-    }
-    ,
-    {
-      id: uuidv4(),
-      nome: "Aluilson",
-      cargo: "Developer Jr.",
-      imagem: "https://github.com/Peixoto1990.png",
-      time: "Devops"
-    }
-    ,
-    {
-      id: uuidv4(),
-      nome: "Aluilson",
-      cargo: "Developer Jr.",
-      imagem: "https://github.com/Peixoto1990.png",
-      time: "UX e Design"
-    }
-    ,
-    {
-      id: uuidv4(),
-      nome: "Aluilson",
-      cargo: "Developer Jr.",
-      imagem: "https://github.com/Peixoto1990.png",
-      time: "Mobile"
-    }
-    ,
-    {
-      id: uuidv4(),
-      nome: "Aluilson",
-      cargo: "Developer Jr.",
-      imagem: "https://github.com/Peixoto1990.png",
-      time: "Inovação e Gestão"
-    }
-  ]
+  const [colaboradores, setColaboradores] = useState([]);
 
-  const [colaboradores, setColaboradores] = useState(inicial);
+  const [formAtivo, setFormAtivo] = useState(true);
 
   const aoNovoColaboradorAdicionado = (colaborador) => {
-      setColaboradores([...colaboradores, colaborador]);
+    setColaboradores([...colaboradores, {...colaborador, id: uuidv4()}]);
+  }
+
+  function aoNovoTimeAdicionado(novoTime) {
+    setTimes([...times, {...novoTime, id: uuidv4()}]);
   }
 
   function mudaCorTime(cor, id) {
@@ -123,20 +72,36 @@ function App() {
       }))
   }
 
+  function favoritaColaborador(id) {
+    setColaboradores(colaboradores.map(
+      colaborador => {
+        if (colaborador.id === id) {
+          colaborador.favorito = !colaborador.favorito
+        }
+        return colaborador
+      }
+    ))
+  }
 
   return (
     <div className="App">
       <Banner />
-      <Formulario 
+      { formAtivo === true ? <Formulario 
         colaboradores={colaboradores}
         times={times}
         aoColaboradorCadastrado={(novoColaborador) => aoNovoColaboradorAdicionado(novoColaborador)} 
+        aoTimeCadastrado={novoTime => aoNovoTimeAdicionado(novoTime)}
+      /> : ""}
+      <BotaoForm 
+       imagem={'/imagens/btn-icone.png'}
+       alteraForm={() => setFormAtivo(!formAtivo)}
       />
       <Time 
         excluiItem={(id) => { 
           setColaboradores(colaboradores.filter(elemento => elemento.id !== id));
         }
         }
+        aoFavorito={(id) => favoritaColaborador(id)}
         times={times}
         colaboradores={colaboradores}
         mudaCorTime={mudaCorTime}
